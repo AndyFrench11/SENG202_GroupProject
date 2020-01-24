@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.lynden.gmapsfx.GoogleMapView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="769.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.team4.Controller.MapController">
+    <children>
+        <GoogleMapView fx:id="mapView" layoutX="-311.0" layoutY="-244.0" maxHeight="720.0" prefHeight="1126.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <Button fx:id="resetMap" mnemonicParsing="false" onAction="#resetMap" prefHeight="35.0" prefWidth="125.0" text="Reset Map" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" />
+        <GridPane fx:id="infoGridPane" layoutX="915.0" layoutY="167.0" opacity="0.84" prefHeight="433.0" prefWidth="253.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="10.0" prefWidth="106.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.0" minWidth="4.0" prefWidth="110.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.0" minWidth="10.0" prefWidth="110.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="285.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="244.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="144.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="144.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="175.0" text="Current Trip" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentTripStartLabel" contentDisplay="TOP" prefHeight="28.0" prefWidth="220.0" text="Start Location" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+            <Rating fx:id="tripRatingInput" prefHeight="319.0" prefWidth="176.0" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="12" GridPane.valignment="CENTER">
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </Rating>
+            <Label fx:id="currentTripDateLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="73.0" text="Date" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.columnSpan="2147483647">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="BOTTOM_CENTER" prefHeight="38.0" prefWidth="251.0" text="Find Nearest" GridPane.columnSpan="2147483647" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="nearestComboBox" prefHeight="26.0" prefWidth="110.0" GridPane.columnSpan="2" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets left="5.0" />
+               </GridPane.margin></ComboBox>
+            <Label alignment="CENTER" prefHeight="16.0" prefWidth="118.0" text="within" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
+               <children>
+                  <TextField fx:id="rangeTextField" prefHeight="30.0" prefWidth="59.0" />
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="26.0" text="km" />
+               </children>
+            </HBox>
+            <Label fx:id="currentTripEndLabel" contentDisplay="TOP" prefHeight="28.0" prefWidth="220.0" text="End Location" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentTripStart2" alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="73.0" text="Start" textAlignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentTripStart21" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="73.0" text="End" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="findNearestButton" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#findNearest" prefHeight="26.0" prefWidth="46.0" text="Go!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
+            <Label fx:id="currentTripStart211" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="73.0" text="Duration" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentTripDurationLabel" prefHeight="28.0" prefWidth="220.0" text="Trip Duration" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="3">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentTripStart2111" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="73.0" text="Gender" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentTripStart2112" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="73.0" text="Distance" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentTripGenderLabel" prefHeight="25.0" prefWidth="145.0" text="Rider Gender" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="5">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentTripDistanceLabel" prefHeight="28.0" prefWidth="220.0" text="Trip Distance" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="4">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentTripStart21111" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="73.0" text="Avg. Speed" GridPane.rowIndex="6">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentTripSpeedLabel" prefHeight="25.0" prefWidth="145.0" text="Trip Speed" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="6">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+    </children>
+</AnchorPane>

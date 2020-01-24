@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="helpPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.team4.Controller.HelpController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" opacity="0.6" pickOnBounds="true" preserveRatio="true" scaleX="3.5" scaleY="3.5" scaleZ="2.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="200.0">
+         <image>
+            <Image url="@../Images/Help.png" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+         <rotationAxis>
+            <Point3D z="2.0" />
+         </rotationAxis>
+         <effect>
+            <Glow level="0.35" />
+         </effect>
+      </ImageView>
+      <Accordion fx:id="helpAccordion" layoutX="50.0" layoutY="50.0" opacity="0.9" prefHeight="423.0" prefWidth="700.0" AnchorPane.bottomAnchor="127.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+        <panes>
+          <TitledPane fx:id="planRouteTitledPane" ellipsisString="0" expanded="false" prefHeight="161.0" prefWidth="526.0" text="Plan Route">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="50.0" layoutY="20.0" text="To Plan a Route, all you need to do is:" />
+                        <Label layoutX="60.0" layoutY="50.0" prefHeight="16.0" prefWidth="167.0" text="1) Go to 'Plan a Route'" />
+                        <Label layoutX="60.0" layoutY="80.0" text="2) Select the Bike trips tab to open up the table" />
+                        <Label layoutX="60.0" layoutY="110.0" text="3) At the bottom left of the window, click on the 'Add' button" />
+                        <Label layoutX="60.0" layoutY="140.0" text="4) Fill in the required details and press 'Submit'" />
+                        <Label layoutX="66.0" layoutY="195.0" text="You should now be able to see your route displayed in the table!" />
+                     </children>
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                  </AnchorPane>
+            </content>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+          </TitledPane>
+          <TitledPane fx:id="viewDataTitledPane" expanded="false" text="View Data">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="50.0" layoutY="20.0" prefHeight="16.0" prefWidth="290.0" text="To View Data, all you need to do is:" />
+                        <Label layoutX="60.0" layoutY="50.0" text="1) Click on 'Plan a Route' side button" />
+                        <Label layoutX="60.0" layoutY="80.0" prefHeight="16.0" prefWidth="340.0" text="You should now be inside the view data panel!" />
+                     </children>
+                  </AnchorPane>
+            </content>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <SepiaTone level="0.2" />
+               </effect>
+          </TitledPane>
+          <TitledPane fx:id="favoritesTitledPane" expanded="false" text="Favorites">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="50.0" layoutY="20.0" prefHeight="16.0" prefWidth="355.0" text="To add a favorite retailer, bike trip or hotspot:" />
+                        <Label layoutX="60.0" layoutY="50.0" prefHeight="16.0" prefWidth="149.0" text="1) Click on 'View Data'" />
+                        <Label layoutX="60.0" layoutY="80.0" prefHeight="16.0" prefWidth="290.0" text="2) Select your favorite item in the table" />
+                        <Label layoutX="60.0" layoutY="110.0" text="3) Once highlighted, right click and select 'Add to favorites'" />
+                        <Label layoutX="60.0" layoutY="140.0" prefHeight="16.0" prefWidth="367.0" text="The item should now be added as a favorite now!" />
+                     </children>
+                  </AnchorPane>
+            </content>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+          </TitledPane>
+            <TitledPane fx:id="importDataTitledPane" expanded="false" text="Importing Data">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="50.0" layoutY="20.0" prefHeight="16.0" prefWidth="119.0" text="To Import Data:" />
+                        <Label layoutX="60.0" layoutY="50.0" text="1) At the top right, select file -&gt; import data" />
+                        <Label layoutX="60.0" layoutY="80.0" text="2) Choose out of bike trips, retailers or hotspots to import a csv-type table from" />
+                        <Label layoutX="60.0" layoutY="110.0" text="3) Go to the path with your desired file and press 'Import' at the bottom right" />
+                        <Label layoutX="60.0" layoutY="140.0" text="4) You should now see a loading screen telling you that RouteMe is importing the csv" />
+                        <Label layoutX="60.0" layoutY="170.0" text="5) Once imported, you should be able to see your table view populated in 'View Data'" />
+                     </children>
+                  </AnchorPane>
+              </content>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <SepiaTone level="0.2" />
+               </effect>
+            </TitledPane>
+            <TitledPane fx:id="returnHomePageTitledPane" expanded="false" text="Returning to Home Page">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="50.0" layoutY="20.0" prefHeight="16.0" prefWidth="211.0" text="To return to the Home Page:" />
+                        <Label layoutX="60.0" layoutY="50.0" text="1) Go to file -&gt; Go to home page" />
+                        <Label layoutX="60.0" layoutY="80.0" text="You should now be on the home page!" />
+                     </children>
+                  </AnchorPane>
+              </content>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TitledPane>
+            <TitledPane fx:id="createDatabaseTitledPane" expanded="false" text="Creating a Database">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="50.0" layoutY="20.0" text="To create a database:" />
+                        <Label layoutX="60.0" layoutY="50.0" text="1) Go to Database -&gt; Create Database" />
+                        <Label layoutX="60.0" layoutY="80.0" text="2) Enter the desired name of the database in the entry prompt and press enter" />
+                        <Label layoutX="60.0" layoutY="110.0" text="Your new databse should now be added and be able to use!" />
+                     </children>
+                  </AnchorPane>
+              </content>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <SepiaTone level="0.2" />
+               </effect>
+            </TitledPane>
+            <TitledPane fx:id="chooseDatabaseTitledPane" expanded="false" text="Choosing a Database">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="50.0" layoutY="20.0" prefHeight="16.0" prefWidth="164.0" text="To choose a database:" />
+                        <Label layoutX="60.0" layoutY="50.0" text="1) Go to database -&gt; Choose Database" />
+                        <Label layoutX="60.0" layoutY="80.0" text="2) Using the choice dialog, select the desired database name and press 'Choose'" />
+                        <Label layoutX="60.0" layoutY="110.0" prefHeight="16.0" prefWidth="374.0" text="You should now be using the desired database!" />
+                     </children>
+                  </AnchorPane>
+              </content>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TitledPane>
+        </panes>
+         <effect>
+            <InnerShadow choke="0.08" color="#4d66e1" height="47.69" radius="18.155" width="26.93" />
+         </effect>
+      </Accordion>
+      <Label layoutX="14.0" layoutY="21.0" prefHeight="21.0" prefWidth="386.0" text="What would you like help with?">
+         <font>
+            <Font name="Roboto Regular" size="18.0" />
+         </font>
+         <effect>
+            <DropShadow color="#5f54d3" radius="10.74" width="23.96" />
+         </effect>
+      </Label>
+      <TextField fx:id="searchField" layoutX="394.0" layoutY="20.0" promptText="help me!" visible="false" />
+      <Button fx:id="searchButton" layoutX="588.0" layoutY="20.0" mnemonicParsing="false" text="Search" visible="false" />
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <effect>
+      <DropShadow color="#e1a0a0" />
+   </effect>
+</AnchorPane>

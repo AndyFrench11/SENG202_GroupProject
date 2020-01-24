@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.Label?>
+<AnchorPane minWidth="-Infinity" stylesheets="@../CSS/EditStyle.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.team4.Controller.MainController">
+   <children>
+       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <top>
+               <MenuBar style="-fx-background-color: GREY;" styleClass="style1" BorderPane.alignment="CENTER">
+                  <menus>
+                      <Menu mnemonicParsing="false" text="File">
+                         <items>
+                             <MenuItem fx:id="fileHome" mnemonicParsing="false" onAction="#goToHomeScreen" text="Go to Homepage">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                             <MenuItem fx:id="importData" mnemonicParsing="false" onAction="#loadData" text="Import Data">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                             <MenuItem fx:id="closeMenu" mnemonicParsing="false" onAction="#closeApplication" text="Close Application">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                         </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Database">
+                         <items>
+                        <MenuItem fx:id="createNewDatabase" mnemonicParsing="false" onAction="#createDatabaseName" text="Create Database" />
+                        <MenuItem fx:id="chooseDatabase" mnemonicParsing="false" onAction="#selectDatabase" text="Choose Database" />
+                        <MenuItem fx:id="deleteDatabaseMenu" mnemonicParsing="false" onAction="#deleteDatabase" text="Delete Database" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="currentDBMenu" mnemonicParsing="false" text="Current DB" />
+                         </items>
+                      </Menu>
+                      <Menu fx:id="filterMenu" mnemonicParsing="false" text="Filter" visible="false">
+                         <items>
+                             <Menu mnemonicParsing="false" text="Advanced Filter">
+                                <items>
+                                    <MenuItem fx:id="filterBikeTripsMenu" mnemonicParsing="false" text="Filter Bike Trips" />
+                                    <MenuItem fx:id="filterRetailersMenu" mnemonicParsing="false" text="Filter Retailers (NOT DONE)" />
+                                    <MenuItem mnemonicParsing="false" text="Filter HotSpots (NOT DONE)" />
+                                </items>
+                             </Menu>
+                             <SeparatorMenuItem mnemonicParsing="false" />
+                             <MenuItem fx:id="clearAllFiltersMenu" mnemonicParsing="false" onAction="#clearAllFilters" text="Clear All Filters" />
+                         </items>
+                      </Menu>
+                  <Menu fx:id="settingsMenu" mnemonicParsing="false" text="Settings" visible="false">
+                    <items>
+                      <MenuItem fx:id="helpItem" mnemonicParsing="false" onAction="#openHelpWindow" text="Help" />
+                    </items>
+                  </Menu>
+                  </menus>
+               </MenuBar>
+           </top>
+           <center>
+               <AnchorPane BorderPane.alignment="BOTTOM_CENTER">
+                   <padding>
+                       <Insets top="2.0" />
+                   </padding>
+                  <children>
+                         <Pane fx:id="viewHistoryPane" disable="true" layoutY="2.0" prefHeight="808.0" prefWidth="1200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Pane fx:id="newDatabasePane" layoutY="2.0" prefHeight="808.0" prefWidth="1200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <HBox layoutX="237.0" layoutY="215.0" prefHeight="100.0" prefWidth="520.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="269.0" text="Please enter the name of the database:" />
+                              <TextField fx:id="databaseNameField">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <Button fx:id="createDatabaseButton" mnemonicParsing="false" onAction="#createDatabaseName" text="OK" />
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </HBox>
+                        <Label fx:id="databaseLabel" layoutX="469.0" layoutY="340.0" prefHeight="17.0" prefWidth="157.0" text="No database created..." />
+                     </children>
+                  </Pane>
+                         <AnchorPane fx:id="planRoutePane" layoutY="2.0" prefHeight="808.0" prefWidth="1200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Pane prefHeight="769.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane fx:id="gMapsAnchorPane" prefHeight="200.0" prefWidth="200.0" />
+                           </children>
+                                </Pane>
+                            </children>
+                         </AnchorPane>
+                         <Pane fx:id="welcomePane" layoutY="2.0" prefHeight="808.0" prefWidth="1200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                        <ImageView fitHeight="769.0" fitWidth="1200.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <image>
+                              <Image url="@../Images/HomeScreen.jpg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" layoutX="296.0" layoutY="36.0" />
+                                <Text fill="#00000076" layoutX="751.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RouteMe" textAlignment="CENTER">
+                                    <font>
+                                        <Font name="Roboto Regular" size="80.0" />
+                                    </font>
+                                </Text>
+                            </children>
+                         </Pane>
+                         <AnchorPane fx:id="rawDataViewerPane" layoutY="2.0" prefHeight="808.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <TabPane fx:id="locationTab" prefHeight="769.0" prefWidth="1200.0" style="-fx-background-color: LIGHTGREY;" styleClass="style1" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                   <tabs>
+                                       <Tab fx:id="bikeTripTab" onSelectionChanged="#bikeTripState" text="Bike Trips">
+                                          <content>
+                                              <AnchorPane>
+                                                 <children>
+                                                     <GridPane layoutX="119.0" layoutY="144.0" prefHeight="736.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <columnConstraints>
+                                                             <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+                                                             <ColumnConstraints maxWidth="93.333251953125" minWidth="1.333251953125" prefWidth="2.0" />
+                                                             <ColumnConstraints />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                             <RowConstraints maxHeight="35.0" minHeight="70.0" prefHeight="35.0" vgrow="ALWAYS" />
+                                                             <RowConstraints vgrow="ALWAYS" />
+                                                             <RowConstraints maxHeight="40.0" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                        <children>
+                                                            <AnchorPane GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                                               <children>
+                                                                   <TableView fx:id="bikeTripTableView" prefHeight="626.0" prefWidth="1198.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                       <columns>
+                                                                           <TableColumn fx:id="dataBikeID" editable="false" prefWidth="75.0" text="Bike ID" />
+                                                                           <TableColumn fx:id="startLocation" editable="false" minWidth="109.0" prefWidth="180.0" text="Start">
+                                                                               <columns>
+                                                                                   <TableColumn fx:id="startLatitude" prefWidth="90.0" text="Latitude" visible="false" />
+                                                                                   <TableColumn fx:id="startLongitude" prefWidth="90.0" text="Longitude" visible="false" />
+                                                                               </columns>
+                                                                           </TableColumn>
+                                                                           <TableColumn fx:id="endLocation" editable="false" minWidth="107.0" prefWidth="180.0" text="End">
+                                                                               <columns>
+                                                                                   <TableColumn fx:id="endLatitude" prefWidth="90.0" text="Latitude" visible="false" />
+                                                                                   <TableColumn fx:id="endLongitude" prefWidth="90.0" text="Longitude" visible="false" />
+                                                                               </columns>
+                                                                           </TableColumn>
+                                                                           <TableColumn fx:id="dataDistance" editable="false" prefWidth="130.0" text="Distance (km)" />
+                                                                           <TableColumn fx:id="dataDuration" prefWidth="125.0" text="Duration (min)" />
+                                                            <TableColumn fx:id="startTime" prefWidth="145.0" text="Start Time (s)" />
+                                                            <TableColumn fx:id="endTime" prefWidth="145.0" text="End Time (s)" />
+                                                                           <TableColumn fx:id="avgSpeed" editable="false" prefWidth="140.0" text="Avg Speed (km/h)" visible="false" />
+                                                                           <TableColumn fx:id="caloriesBurnt" text="Calories" />
+                                                                           <TableColumn fx:id="dataGender" minWidth="65.0" prefWidth="65.0" text="Gender" />
+                                                                           <TableColumn fx:id="rating" prefWidth="75.0" text="Rating" />
+                                                            <TableColumn fx:id="bikeTripFavourite" prefWidth="111.0" text="Favourite" />
+                                                                       </columns>
+                                                                   </TableView>
+                                                               </children>
+                                                            </AnchorPane>
+                                                <GridPane prefHeight="70.0" prefWidth="1033.0" GridPane.columnSpan="3">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" percentWidth="17.9" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" percentWidth="17.9" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" percentWidth="17.9" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" percentWidth="17.9" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" percentWidth="17.9" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="26.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="35.0" minWidth="35.0" prefWidth="0.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                                   <TextField fx:id="tripBikeIdSearch" prefHeight="26.0" prefWidth="141.0" promptText="Bike ID" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                   <TextField fx:id="minTripDistanceSearch" prefHeight="26.0" prefWidth="140.0" promptText="Min Distance (km)" GridPane.columnIndex="2" />
+                                                                   <TextField fx:id="minTripDurationSearch" prefHeight="26.0" prefWidth="140.0" promptText="Min Duration (min)" GridPane.columnIndex="3" />
+                                                                   <TextField fx:id="tripGenderSearch" prefHeight="26.0" prefWidth="121.0" promptText="Gender" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                                                   <Button fx:id="searchBikeTripsButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchBikeTrips" prefHeight="25.0" prefWidth="70.0" text="Search" GridPane.columnIndex="5" />
+                                                                   <ProgressIndicator fx:id="tripSearchProgressIndicator" maxHeight="-Infinity" prefHeight="25.0" prefWidth="25.0" visible="false" GridPane.columnIndex="6" />
+                                                      <TextField fx:id="maxTripDurationSearch" promptText="Max Duration (min)" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                      <TextField fx:id="maxTripDistanceSearch" promptText="Max Distance (km)" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                      <TextField fx:id="startAddressSearch" promptText="Start Address" />
+                                                      <TextField fx:id="endAddressSearch" promptText="End Address" GridPane.rowIndex="1" />
+                                                      <TextField fx:id="ratingSearch" promptText="Rating" GridPane.columnIndex="4" />
+                                                      <TextField fx:id="tripCitySearch" promptText="City" GridPane.columnIndex="1" />
+                                                      <RadioButton fx:id="favoriteTrips" layoutX="1089.0" layoutY="54.0" mnemonicParsing="false" onAction="#displayFavorites" text="Favorites" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </GridPane.margin>
+                                                      </RadioButton>
+                                                   </children>
+                                                </GridPane>
+                                                            <HBox minHeight="-Infinity" prefHeight="40.0" spacing="10.0" GridPane.rowIndex="2">
+                                                               <children>
+                                                                   <Button fx:id="addBikeTripButton" mnemonicParsing="false" onAction="#addDatabaseEntry" text="Add" />
+                                                                   <Button fx:id="editBikeTripButton" mnemonicParsing="false" onAction="#editBikeTripEntry" text="Edit" />
+                                                                   <Button fx:id="endBikeTripEditButton" mnemonicParsing="false" onAction="#endBikeTripEdit" text="Done Editing" />
+                                                                   <Button fx:id="clearFilterBikeTripsButton" mnemonicParsing="false" onAction="#clearFilterBikeTrips" text="Clear Filter" />
+                                                      <Button fx:id="tripUpdateButton" mnemonicParsing="false" onAction="#updateEntry" text="Update Stats" />
+                                                               </children>
+                                                            </HBox>
+                                                        </children>
+                                                     </GridPane>
+                                                 </children>
+                                              </AnchorPane>
+                                          </content>
+                                       </Tab>
+                                       <Tab fx:id="retailerTab" onSelectionChanged="#retailState" text="Retailers">
+                                          <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                 <children>
+                                                     <GridPane prefHeight="736.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <columnConstraints>
+                                                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                             <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                                                             <RowConstraints vgrow="SOMETIMES" />
+                                                             <RowConstraints maxHeight="-Infinity" minHeight="40.0" prefHeight="40.0" />
+                                                         </rowConstraints>
+                                                        <children>
+                                                            <AnchorPane GridPane.rowIndex="1">
+                                                               <children>
+                                                                   <TableView fx:id="retailerTableView" prefHeight="626.0" prefWidth="1200.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                       <columns>
+                                                            <TableColumn fx:id="retailerName" prefWidth="118.3333740234375" text="Name" />
+                                                                           <TableColumn fx:id="retailPrType" prefWidth="155.33331298828125" text="Primary Type" />
+                                                                           <TableColumn fx:id="retailScType" prefWidth="123.66668701171875" text="Secondary Type" />
+                                                                           <TableColumn fx:id="retailStr" prefWidth="162.0" text="Street" />
+                                                            <TableColumn fx:id="retailCity" prefWidth="100.91650390625" text="City" />
+                                                                           <TableColumn fx:id="retailState" minWidth="0.0" prefWidth="77.0" text="State" />
+                                                                           <TableColumn fx:id="retailZip" minWidth="0.0" prefWidth="75.0" text="ZIP" />
+                                                            <TableColumn prefWidth="204.0" text="Location">
+                                                               <columns>
+                                                                  <TableColumn fx:id="retailLatitude" prefWidth="90.0" text="Latitude" visible="false" />
+                                                                  <TableColumn fx:id="retailLongitude" prefWidth="90.0" text="Longitude" visible="false" />
+                                                               </columns>
+                                                            </TableColumn>
+                                                            <TableColumn fx:id="retailBlock" prefWidth="75.0" text="Block" visible="false" />
+                                                            <TableColumn fx:id="retailLot" prefWidth="75.0" text="Lot" visible="false" />
+                                                            <TableColumn fx:id="retailerFavourite" prefWidth="100.91650390625" text="Favourite" />
+                                                                       </columns>
+                                                                   </TableView>
+                                                               </children>
+                                                            </AnchorPane>
+                                                <GridPane maxHeight="75.0" minHeight="75.0" prefHeight="75.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" percentWidth="17.9" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" percentWidth="17.9" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" percentWidth="17.9" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" percentWidth="17.9" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" percentWidth="17.9" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <TextField fx:id="retailerSearchNameField" prefHeight="26.0" prefWidth="150.0" promptText="Name" GridPane.rowIndex="1" />
+                                                                   <TextField fx:id="retailerPrimarySearch" promptText="Primary Type" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <TextField fx:id="retailerSecondarySearch" prefHeight="26.0" prefWidth="150.0" promptText="Secondary Type" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                                   <TextField fx:id="retailerStreetSearch" promptText="Street" />
+                                                      <TextField fx:id="retailerCitySearch" prefHeight="26.0" prefWidth="89.0" promptText="City" GridPane.columnIndex="1" />
+                                                                   <TextField fx:id="retailerStateSearch" prefHeight="26.0" prefWidth="60.0" promptText="State" GridPane.columnIndex="2" />
+                                                                   <TextField fx:id="retailerZipSearch" prefHeight="26.0" prefWidth="64.0" promptText="ZIP" GridPane.columnIndex="3" />
+                                                                   <Button fx:id="searchRetailersButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchRetailers" prefHeight="25.0" prefWidth="70.0" text="Search" GridPane.columnIndex="5" />
+                                                      <ProgressIndicator fx:id="retailerProgressIndicator" maxHeight="-Infinity" prefHeight="25.0" prefWidth="25.0" visible="false" GridPane.columnIndex="6" />
+                                                      <RadioButton fx:id="favoriteRetailer" mnemonicParsing="false" onAction="#displayFavorites" text="Favorites" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </GridPane.margin>
+                                                      </RadioButton>
+                                                   </children>
+                                                </GridPane>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
+                                                                <padding>
+                                                                    <Insets left="7.0" top="7.0" />
+                                                                </padding>
+                                                               <children>
+                                                                   <Button fx:id="addRetailerButton" mnemonicParsing="false" onAction="#addDatabaseEntry" text="Add" />
+                                                                   <Button fx:id="editRetailerButton" mnemonicParsing="false" onAction="#editRetailerEntry" text="Edit" />
+                                                      <Button fx:id="endRetailerEditButton" mnemonicParsing="false" onAction="#endRetailerEdit" text="Done Editing" />
+                                                                   <Button fx:id="clearFilterRetailersButton" mnemonicParsing="false" onAction="#clearFilterRetailers" text="Clear Filter" />
+                                                      <Button fx:id="displayAllRetailersButton" alignment="CENTER" mnemonicParsing="false" onAction="#displayAllRetailers" text="Add Current Search to Map" />
+                                                               </children>
+                                                            </HBox>
+                                                        </children>
+                                                     </GridPane>
+                                                 </children>
+                                              </AnchorPane>
+                                          </content>
+                                       </Tab>
+                                       <Tab fx:id="hotSpotTab" onSelectionChanged="#hotSpotState" text="Wi-FI Hotspots">
+                                          <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                 <children>
+                                                     <GridPane prefHeight="736.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <columnConstraints>
+                                                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                             <RowConstraints maxHeight="35.0" minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                                                             <RowConstraints vgrow="SOMETIMES" />
+                                                             <RowConstraints maxHeight="40.0" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                        <children>
+                                                            <AnchorPane GridPane.rowIndex="1">
+                                                               <children>
+                                                                   <TableView fx:id="hotSpotTableView" prefHeight="661.0" prefWidth="1200.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                       <columns>
+                                                            <TableColumn fx:id="hotSpotName" prefWidth="75.0" text="Name" />
+                                                                           <TableColumn fx:id="hotSpotBorough" prefWidth="90.0" text="Borough" />
+                                                                           <TableColumn fx:id="hotSpotLocationInfo" prefWidth="195.0" text="Location" />
+                                                                           <TableColumn fx:id="hotSpotLocationType" prefWidth="130.0" text="Location Type" />
+                                                                           <TableColumn fx:id="hotSpotPolicy" prefWidth="107.112548828125" text="Policy" />
+                                                                           <TableColumn fx:id="hotSpotPolicyDisc" prefWidth="107.9647216796875" text="Policy Disc" />
+                                                                           <TableColumn fx:id="hotSpotProvider" text="Provider" />
+                                                            <TableColumn prefWidth="202.0" text="Location">
+                                                               <columns>
+                                                                  <TableColumn fx:id="hotSpotLatitude" prefWidth="105.0" text="Latitude" visible="false" />
+                                                                  <TableColumn fx:id="hotSpotLongitude" prefWidth="105.0" text="Longitude" visible="false" />
+                                                               </columns>
+                                                            </TableColumn>
+                                                            <TableColumn fx:id="hotSpotFavourite" text="Favourite" />
+                                                                       </columns>
+                                                                   </TableView>
+                                                               </children>
+                                                            </AnchorPane>
+                                                <GridPane>
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="17.9" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="17.9" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="17.9" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="17.9" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="17.9" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="30.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <TextField fx:id="hotSpotSearchNameField" promptText="Name" />
+                                                                   <TextField fx:id="hotspotBoroughSearch" promptText="Borough" GridPane.columnIndex="1" />
+                                                                   <TextField fx:id="hotspotLocationSearch" promptText="Location" GridPane.columnIndex="2" />
+                                                                   <TextField fx:id="hotspotLocationTypeSearch" promptText="Location Type" GridPane.columnIndex="3" />
+                                                                   <TextField fx:id="hotspotPolicySearch" promptText="Policy" GridPane.rowIndex="1" />
+                                                                   <TextField fx:id="hotspotPolicyDescSearch" promptText="Policy Desc" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                   <TextField fx:id="hotspotProviderSearch" promptText="Provider" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                                   <Button fx:id="searchHotspotsButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchHotspots" prefHeight="25.0" prefWidth="70.0" text="Search" GridPane.columnIndex="5" />
+                                                      <RadioButton fx:id="favoriteHotSpot" mnemonicParsing="false" onAction="#displayFavorites" text="Favorites" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                                         <padding>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </padding>
+                                                      </RadioButton>
+                                                   </children>
+                                                </GridPane>
+                                                            <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
+                                                                <padding>
+                                                                    <Insets left="7.0" top="7.0" />
+                                                                </padding>
+                                                               <children>
+                                                                   <Button fx:id="addHotSpotButton" mnemonicParsing="false" onAction="#addDatabaseEntry" text="Add" />
+                                                                   <Button fx:id="editHotSpotButton" mnemonicParsing="false" onAction="#editHotSpotEntry" text="Edit" />
+                                                      <Button fx:id="endHotSpotEditButton" mnemonicParsing="false" onAction="#endHotSpotEdit" text="Done Editing" />
+                                                                   <Button fx:id="clearFilterHotSpotsButton" mnemonicParsing="false" onAction="#clearFilterHotSpots" text="Clear Filter" />
+                                                      <Button fx:id="displayAllHotspotsButton" alignment="CENTER" mnemonicParsing="false" onAction="#displayAllHotspots" text="Add Current Search to Map" />
+                                                               </children>
+                                                            </HBox>
+                                                        </children>
+                                                     </GridPane>
+                                                 </children>
+                                              </AnchorPane>
+                                          </content>
+                                       </Tab>
+                                       <Tab fx:id="LocationTab" onSelectionChanged="#locationState" text="Locations">
+                                          <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                 <children>
+                                                     <GridPane prefHeight="736.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <columnConstraints>
+                                                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                             <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                                             <RowConstraints vgrow="SOMETIMES" />
+                                                             <RowConstraints maxHeight="40.0" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                        <children>
+                                                            <AnchorPane GridPane.rowIndex="1">
+                                                               <children>
+                                                                   <TableView fx:id="locationTableView" prefHeight="661.0" prefWidth="1200.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                       <columns>
+                                                                           <TableColumn fx:id="locationName" minWidth="20.0" prefWidth="150.0" text="Address" />
+                                                                           <TableColumn fx:id="locationAddress" prefWidth="195.0" text="Address" visible="false" />
+                                                                           <TableColumn fx:id="locationCity" prefWidth="130.0" text="City" />
+                                                            <TableColumn prefWidth="200.0" text="Location">
+                                                               <columns>
+                                                                  <TableColumn fx:id="locationLatitude" prefWidth="120.0" text="Latitude" visible="false" />
+                                                                  <TableColumn fx:id="locationLongitude" prefWidth="120.0" text="Longitude" visible="false" />
+                                                               </columns>
+                                                            </TableColumn>
+                                                            <TableColumn fx:id="locationFavourite" prefWidth="130.0" text="Favourite" />
+                                                                       </columns>
+                                                                   </TableView>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                <padding>
+                                                                    <Insets left="2.0" right="2.0" top="5.0" />
+                                                                </padding>
+                                                               <children>
+                                                      <TextField fx:id="locationSearchNameField" promptText="Name" />
+                                                      <TextField fx:id="locationCitySearchField" promptText="City" />
+                                                                   <TextField fx:id="locationAddressSearchField" promptText="Address" />
+                                                                   <Button fx:id="searchLocationsButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchLocations" prefHeight="25.0" prefWidth="70.0" text="Search" />
+                                                      <RadioButton fx:id="favoriteLocation" mnemonicParsing="false" onAction="#displayFavorites" text="Favorites">
+                                                         <padding>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </padding>
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                      </RadioButton>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
+                                                                <padding>
+                                                                    <Insets left="7.0" right="7.0" top="7.0" />
+                                                                </padding>
+                                                                <GridPane.margin>
+                                                                    <Insets />
+                                                                </GridPane.margin>
+                                                               <children>
+                                                                   <Button fx:id="addLocationButton" mnemonicParsing="false" onAction="#addDatabaseEntry" text="Add" />
+                                                                   <Button fx:id="clearLocationFilterButton" mnemonicParsing="false" onAction="#clearFilterLocations" text="Clear Filter" />
+                                                      <Button fx:id="displayAllLocationsButton" alignment="CENTER" mnemonicParsing="false" onAction="#displayAllLocations" text="Add Current Search to Map" />
+                                                               </children>
+                                                            </HBox>
+                                                        </children>
+                                                     </GridPane>
+                                                 </children>
+                                              </AnchorPane>
+                                          </content>
+                                       </Tab>
+                                   </tabs>
+                                </TabPane>
+                            </children>
+                         </AnchorPane>
+                  <VBox fx:id="buttonBox" layoutY="175.0" prefHeight="340.0" prefWidth="180.0">
+                     <children>
+                                <Button fx:id="planRouteBtn" mnemonicParsing="false" onAction="#planRoute" opacity="0.8" prefHeight="260.0" prefWidth="180.0" text="Map" textFill="#000000d8">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                                <Button fx:id="viewDataBtn" mnemonicParsing="false" onAction="#viewRawData" opacity="0.8" prefHeight="260.0" prefWidth="180.0" text="Plan a Route" textFill="#111010" />
+                        <Button disable="true" mnemonicParsing="false" text="--------------------------" />
+                        <Button fx:id="helpButton" mnemonicParsing="false" onAction="#openHelpWindow" text="Help" />
+                        <Button fx:id="quitButton" mnemonicParsing="false" onAction="#closeApplication" text="Quit" />
+                     </children>
+                  </VBox>
+                  </children>
+               </AnchorPane>
+           </center>
+       </BorderPane>
+   </children>
+</AnchorPane>

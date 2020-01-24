@@ -1,0 +1,36 @@
+#buttonBox {
+    /*-fx-background-color: lightgrey;*/
+    -fx-spacing: 10;
+}
+
+#buttonBox .button {
+    -fx-pref-height: 60;
+    -fx-pref-width: 200;
+    -fx-background-color: /*GREY*/ darkgray;
+    -fx-font-weight: bold/*er*/;
+    -fx-font-size: 18;
+    -fx-text-fill: black;
+
+
+}
+
+#buttonBox #planRouteBtn {
+    -fx-background-image: url("../Images/rsz_11map.jpg");
+}
+
+#buttonBox #viewDataBtn {
+    -fx-background-image: url("../Images/rsz_1icon_1024.jpg");
+}
+
+#buttonBox #helpButton {
+    -fx-background-image: url("../Images/rsz_1help_icon.jpg");
+}
+
+#buttonBox #quitButton {
+    -fx-background-image: url("../Images/rsz_3door_exit.jpg");
+}
+
+#buttonBox .button:hover {
+    -fx-background-color: lightgray;
+}
+
